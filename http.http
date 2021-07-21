@@ -1,0 +1,22 @@
+POST http://localhost:4000/api/countriesAndCities/new
+Content-Type: application/json
+
+{
+  "name" : "Magadan",
+  "continent" : "Europe",
+  "residentCount" : 154342344,
+  "type" : "city"
+}
+
+### get all countries and cities
+
+GET http://localhost:4000/api/countriesAndCities
+
+
+### delete single country or city
+
+DELETE http://localhost:4000/api/countriesAndCities/60f7db2921b127ee4c3bc53c
+
+
+
+
