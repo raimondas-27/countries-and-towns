@@ -1,35 +1,53 @@
 import React, {Component} from 'react';
+import {postNewCityOrCountry} from "../utils/requests";
 import "../App.css"
 
 class FormForCountriesAndCities extends Component {
    state = {
-      city: "",
-      country: "",
-      citizenCount: "",
-      type: "",
+      formData: {
+         name: "",
+         continent: "",
+         residentCount: 0,
+         type: "",
+      }
 
    }
 
    handleChange = (event) => {
-      this.setState({city: event.target.value});
-      this.setState({country: event.target.value});
-      this.setState({citizenCount: event.target.value});
-      this.setState({type: event.target.value});
-   };
+      const formDataCopy = {...this.state.formData};
+      formDataCopy[event.target.name] = event.target.value;
+      this.setState({formData: formDataCopy});
+   }
+
+   handleData = (event) => {
+      event.preventDefault();
+      event.target.value = '';
+      postNewCityOrCountry(this.state.formData, () => {});
+   }
 
    render() {
       return (
           <div>
-             <form className={"form-container"}>
-                <label htmlFor={"city"}> Miestas : </label>
-                <input id={"city"} type="text" onChange={this.handleChange} value={this.state.city}/>
-                <label htmlFor={"continent"}> Zemynas </label>
-                <input id={"continent"} type="text" onChange={this.handleChange} value={this.state.country}/>
-                <label htmlFor={"citizenCount"}> Gyv. skaicius </label>
-                <input id={"citizenCount"} type="text" onChange={this.handleChange} value={this.state.citizenCount}/>
-                <label htmlFor={"type"}> Tipas </label>
-                <input id={"type"} type="text" onChange={this.handleChange} value={this.state.type}/>
-                <button class={"form-button"}> Add data</button>
+             <form onSubmit={this.handleData} onChange={this.handleChange} className={"form-container"}>
+                <label htmlFor={"name"}> Miestas : </label>
+                <input id={"name"}
+                       name={"name"}
+                       type="text"/>
+                <label htmlFor={"continent"}> Zemynas : </label>
+                <input id={"continent"}
+                       name={"continent"}
+                       type="text"/>
+                <label htmlFor={"residentCount"}> Gyv. skaicius : </label>
+                <input id={"residentCount"}
+                       name={"residentCount"}
+                       type="text"/>
+                <label htmlFor={"type"}> Tipas : </label>
+                <input id={"type"}
+                       name={"type"}
+                       type="text"/>
+                <button type={"submit"}
+                        className={"form-button"}> Add data
+                </button>
              </form>
           </div>
       );

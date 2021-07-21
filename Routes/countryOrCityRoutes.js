@@ -17,12 +17,7 @@ router.get('/api/countriesAndCities', async (req, res) => {
 router.post('/api/countriesAndCities/new', (req, res) => {
    console.log(req.body);
 
-   const newCountryOrCity = new CountryOrCity({
-      name : "Madagaskar",
-      continent : "Afrika",
-      residentCount : 4546,
-      type: "country",
-   })
+   const newCountryOrCity = new CountryOrCity(req.body)
 
    newCountryOrCity
        .save()
@@ -33,9 +28,9 @@ router.post('/api/countriesAndCities/new', (req, res) => {
 
 //delete single data
 
-router.delete('/api/countriesAndCities/:id', async (req, res) => {
+router.delete('/api/countriesAndCities/delete/:dataId', async (req, res) => {
    try {
-      const deletingCountryOrCity = await CountryOrCity.findByIdAndDelete({_id: req.params.id})
+      const deletingCountryOrCity = await CountryOrCity.findByIdAndDelete({_id: req.params.dataId})
       res.json(deletingCountryOrCity);
    } catch (err) {
       res.status(500).json(err);
