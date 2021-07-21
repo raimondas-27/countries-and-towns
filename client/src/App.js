@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Route, Switch, Redirect } from 'react-router';
+import CountriesAndCities from "./components/CountriesAndCities";
 
 class App extends Component {
   constructor(props){
@@ -8,8 +10,8 @@ class App extends Component {
 
   render() {
     return (
-        <div>
-          <h2> i am in app</h2>
+        <div className={"container"}>
+          <CountriesAndCities/>
         </div>
     );
   }
