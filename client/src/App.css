@@ -1,26 +1,42 @@
-.input {
-  margin: 2rem auto;
-  padding: 1rem;
-  width: 90%;
-  max-width: 40rem;
+/*.container {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*}*/
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.input label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+.card {
+  display: flex;
+  border: 1px solid black;
+  text-align: center;
+  margin-top: 20px;
 }
 
-.input input {
-  font: inherit;
-  display: block;
-  width: 100%;
-  border: 1px solid #ccc;
-  padding: 0.15rem;
-  margin-bottom: 0.5rem;
+.card__name {
+  border: 1px solid black;
 }
 
-.input input:focus {
-  outline: none;
-  border-color: #4f005f;
+.card__continent {
+  border: 1px solid black;
+}
+
+.card__residentCount {
+  border: 1px solid black;
+}
+
+.card__type {
+  border: 1px solid black;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-button {
+  margin-top: 20px;
 }

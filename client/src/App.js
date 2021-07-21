@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import CountriesAndCities from "./components/CountriesAndCities";
 import FormForCountriesAndCities from "./components/FormForCountriesAndCities";
+import CountriesAndCities from "./components/CountriesAndCities";
 
 class App extends Component {
   constructor(props){

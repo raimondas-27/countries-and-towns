@@ -1,13 +1,34 @@
 import React, {Component} from 'react';
+import OneCountryOrCity from "./OneCountryOrCity";
+import {getAllCountriesOrCities} from "../utils/requests"
+
 
 class CountriesAndCities extends Component {
-   state = {}
+   constructor(props) {
+      super(props);
+
+      this.state = {
+         everyCountryOrCity : []
+      }
+   }
+
+   componentDidMount() {
+    this.getAllCountriesAndCountries();
+  }
+
+  getAllCountriesAndCountries = async () => {
+    const result = await getAllCountriesOrCities();
+    this.setState({ everyCountryOrCity: result });
+  };
+
 
    render() {
       return (
-          <div>
-             <h2> I AM IN COUNTRIES AND CITIES</h2>
-          </div>
+      <div className='container'>
+        {this.state.everyCountryOrCity.map((onePlaceOrCity) => (
+          <OneCountryOrCity key={onePlaceOrCity._id} onePlaceOrCity={onePlaceOrCity} />
+        ))}
+      </div>
       );
    }
 }

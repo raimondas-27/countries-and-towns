@@ -35,12 +35,29 @@ router.post('/api/countriesAndCities/new', (req, res) => {
 
 router.delete('/api/countriesAndCities/:id', async (req, res) => {
    try {
-      const deletingCountryOrCity = await CountryOrCity.findByIdAndDelete(req.params.id)
+      const deletingCountryOrCity = await CountryOrCity.findByIdAndDelete({_id: req.params.id})
       res.json(deletingCountryOrCity);
    } catch (err) {
       res.status(500).json(err);
    }
 });
+
+//update single data
+
+router.put('/api/countriesAndCities/edit/:id', async (req, res) => {
+  const { name, continent, residentCount, type } = req.body;
+  const updatingCountryOrCity = await CountryOrCity.findOneAndUpdate(
+    { _id: req.params.id },
+    {
+      name,
+      continent,
+      residentCount,
+      type,
+    }
+  );
+  res.send({ success: true, msg: updatingCountryOrCity });
+});
+
 
 
 
