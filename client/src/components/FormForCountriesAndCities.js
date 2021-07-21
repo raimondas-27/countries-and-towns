@@ -1,34 +1,19 @@
 import React, {Component} from 'react';
-import {postNewCityOrCountry} from "../utils/requests";
+
 import "../App.css"
 
+
 class FormForCountriesAndCities extends Component {
-   state = {
-      formData: {
-         name: "",
-         continent: "",
-         residentCount: 0,
-         type: "",
-      }
+   state = {}
 
-   }
 
-   handleChange = (event) => {
-      const formDataCopy = {...this.state.formData};
-      formDataCopy[event.target.name] = event.target.value;
-      this.setState({formData: formDataCopy});
-   }
-
-   handleData = (event) => {
-      event.preventDefault();
-      event.target.value = '';
-      postNewCityOrCountry(this.state.formData, () => {});
-   }
 
    render() {
       return (
           <div>
-             <form onSubmit={this.handleData} onChange={this.handleChange} className={"form-container"}>
+             <form onSubmit={this.props.onHandleData}
+                   onChange={this.props.onHandleChange}
+                   className={"form-container"}>
                 <label htmlFor={"name"}> Miestas : </label>
                 <input id={"name"}
                        name={"name"}

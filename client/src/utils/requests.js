@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 const baseUrl = 'http://localhost:4000';
 
 
@@ -12,10 +11,11 @@ export const getAllCountriesOrCities = async () => {
    }
 };
 
-export const postNewCityOrCountry = async (formData, successCallback) => {
+export const postNewCityOrCountry = async (formData) => {
    try {
       const res = await axios.post(`${baseUrl}/api/countriesAndCities/new`, formData)
-      return successCallback(res.data)
+      return res.data
+
    } catch (err) {
       console.log(err.message)
    }

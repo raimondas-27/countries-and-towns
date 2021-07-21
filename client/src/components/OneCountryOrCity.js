@@ -4,11 +4,7 @@ import "../App.css";
 class OneCountryOrCity extends Component {
    state = {}
 
-
-
    render() {
-
-
 
       const {_id, name, continent, residentCount, type} = this.props.onePlaceOrCity
 
