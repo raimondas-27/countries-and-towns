@@ -21,6 +21,11 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors());
 
+// routes
+
+const countryOrCityRoutes = require("./Routes/countryOrCityRoutes");
+app.use("/", countryOrCityRoutes);
+
 
 app.get('/', (req, res) => {
   res.status(200).json(`Serveris veikia an port ${PORT}`);

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Switch, Redirect } from 'react-router';
+
 import CountriesAndCities from "./components/CountriesAndCities";
+import FormForCountriesAndCities from "./components/FormForCountriesAndCities";
 
 class App extends Component {
   constructor(props){
@@ -11,6 +12,7 @@ class App extends Component {
   render() {
     return (
         <div className={"container"}>
+           <FormForCountriesAndCities/>
           <CountriesAndCities/>
         </div>
     );
