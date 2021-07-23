@@ -38,27 +38,32 @@ router.delete('/api/countriesAndCities/delete/:dataId', async (req, res) => {
 });
 
 //update single data
-
+//TODO va cia tai idomiai
 router.put('/api/countriesAndCities/edit/:id', async (req, res) => {
-  const { name, continent, residentCount, type } = req.body;
-  const updatingCountryOrCity = await CountryOrCity.findOneAndUpdate(
-    { _id: req.params.id },
-    {
-      name,
-      continent,
-      residentCount,
-      type,
-    }
-  );
-  res.send({ success: true, msg: updatingCountryOrCity });
+   console.log("req body",req.body)
+   try {
+      // const {name, continent, residentCount, type} = req.body;
+      // const updatingCountryOrCity = await CountryOrCity.findByIdAndUpdate({_id: req.params.id}, req.body)
+      const updatingCountryOrCity = await CountryOrCity.findByIdAndUpdate({_id: req.params.id},
+          req.body)
+      console.log(updatingCountryOrCity)
+      res.json({success: true, msg: updatingCountryOrCity});
+   } catch (err) {
+      res.json(err);
+   }
+
 });
 
-
-
-
-
-
-
+router.get('/api/countriesAndCities/filter', async (req, res) => {
+   console.log("pasileidau")
+   try {
+      const allCountriesAndCities = await CountryOrCity.find()
+      const filteredCountriesOrCities = allCountriesAndCities.filter((element) => element.type === req.body)
+      res.json({success : true, filteredCountriesOrCities});
+   } catch (err) {
+      res.status(500).json('internal error');
+   }
+});
 
 
 module.exports = router;

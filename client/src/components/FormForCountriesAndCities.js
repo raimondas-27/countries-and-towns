@@ -4,9 +4,6 @@ import "../App.css"
 
 
 class FormForCountriesAndCities extends Component {
-   state = {}
-
-
 
    render() {
       return (
